@@ -13,6 +13,8 @@ app.use(bodyParser);
 // Routes
 app.use('/inventory', inventoryRoutes);
 
+
+
 // Default values for development
 let PORT = 8080;
 let HOST = 'localhost';
@@ -25,6 +27,11 @@ if (process.env.NODE_ENV === 'production') {
 
 app.get('/', (req, res) => {
   res.send('Application test!!!!!');
+});
+
+app.post('/echo', (req, res) => {
+  const requestData = req.body;
+  res.json(requestData);
 });
 
 app.listen(PORT, HOST, () => {
